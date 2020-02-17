@@ -49,7 +49,7 @@ public class Number3Medium {
     @SuppressWarnings("ConstantConditions")
     private void solve(Node tree) {
         boolean dump_trees = false;
-        
+
         if (dump_trees) {
             dumpTree(tree);
         }
