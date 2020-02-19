@@ -17,6 +17,7 @@ public class Number448Hard {
     public static void main(String[] args) {
         Number448Hard solution = new Number448Hard();
         System.out.println(Arrays.toString(solution.get(new char[] { 'G', 'B', 'R', 'R', 'B', 'R', 'G' })));
+        System.out.println(Arrays.toString(solution.get(new char[] { 'G', 'R', 'G', 'B', 'R', 'B' })));
     }
 
     private char[] get(char[] input) {
