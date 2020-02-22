@@ -4,14 +4,14 @@ package org.homesoft.dcp;
  * This problem was asked by Google.
  * <p>
  * Given the root to a binary tree, implement serialize(root), which serializes the tree into a string, and deserialize(s), which deserializes the string back into the tree.
- *
+ * <p>
  * For example, given the following Node class
- *<code language="python">
+ * <code language="python">
  * class Node:
- *     def __init__(self, val, left=None, right=None):
- *         self.val = val
- *         self.left = left
- *         self.right = right
+ * def __init__(self, val, left=None, right=None):
+ * self.val = val
+ * self.left = left
+ * self.right = right
  * </code>
  * The following test should pass:
  * <code language="python">
@@ -20,19 +20,6 @@ package org.homesoft.dcp;
  * </code>
  */
 public class Number3Medium {
-    static class Node {
-        int data;
-
-        Node left;
-        Node right;
-
-        Node(int data, Node left, Node right) {
-            this.data = data;
-            this.left = left;
-            this.right = right;
-        }
-    }
-
     public static void main(String[] args) {
         Number3Medium solution = new Number3Medium();
 
@@ -44,6 +31,28 @@ public class Number3Medium {
 
         Node unbalancedTree = new Node(1, new Node(2, null, new Node(3, null, new Node(4, null, null))), null);
         solution.solve(unbalancedTree);
+    }
+
+    static void dumpTree(Node root) {
+        dumpTreeHelper(root, 0);
+    }
+
+    private static void dumpTreeHelper(Node tree, int indent) {
+        if (null != tree) {
+            System.err.println(Number3Medium.indent("\t", indent) + tree.data);
+            dumpTreeHelper(tree.left, 1 + indent);
+            dumpTreeHelper(tree.right, 1 + indent);
+        } else {
+            System.err.println(Number3Medium.indent("\t", indent) + "-");
+        }
+    }
+
+    private static String indent(@SuppressWarnings("SameParameterValue") String c, int i) {
+        StringBuilder stringBuilder = new StringBuilder();
+        while (0 != i--) {
+            stringBuilder.append(c);
+        }
+        return stringBuilder.toString();
     }
 
     @SuppressWarnings("ConstantConditions")
@@ -62,7 +71,7 @@ public class Number3Medium {
         }
     }
 
-    private Node deserialize(String result) {
+    Node deserialize(String result) {
         int pos = 0;
 
         class DeserializeHelper {
@@ -110,25 +119,16 @@ public class Number3Medium {
         }
     }
 
-    private String indent(@SuppressWarnings("SameParameterValue") String c, int i) {
-        StringBuilder stringBuilder = new StringBuilder();
-        while (0 != i--) {
-            stringBuilder.append(c);
-        }
-        return stringBuilder.toString();
-    }
+    static class Node {
+        int data;
 
-    private void dumpTree(Node root) {
-        dumpTreeHelper(root, 0);
-    }
+        Node left;
+        Node right;
 
-    private void dumpTreeHelper(Node tree, int indent) {
-        if (null != tree) {
-            System.out.println(this.indent("\t", indent) + tree.data);
-            dumpTreeHelper(tree.left, 1 + indent);
-            dumpTreeHelper(tree.right, 1 + indent);
-        } else {
-            System.out.println(this.indent("\t", indent) + "-");
+        Node(int data, Node left, Node right) {
+            this.data = data;
+            this.left = left;
+            this.right = right;
         }
     }
 }
