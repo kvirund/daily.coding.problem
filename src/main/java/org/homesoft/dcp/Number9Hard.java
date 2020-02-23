@@ -23,7 +23,7 @@ public class Number9Hard {
     private int get(int[] input) {
         int excluding = 0;
         int including = input[0];
-        
+
         for (int i = 0; i != input.length; ++i) {
             final int new_excluding = Math.max(excluding, including);
             including = excluding + input[i];
