@@ -1,6 +1,5 @@
 package org.homesoft.dcp;
 
-import com.sun.istack.internal.NotNull;
 import javafx.util.Pair;
 
 /**
@@ -29,7 +28,7 @@ public class Number8Easy {
 
         System.out.println(solution.get(treeDeserializer.deserialize("0,1,null,null,2,null,null")));
         System.out.println(solution.get(treeDeserializer.deserialize(
-                "0,1,null,null,0,1,1,null,null,1,null,null,0,null,null")));
+            "0,1,null,null,0,1,1,null,null,1,null,null,0,null,null")));
     }
 
     private int get(Number3Medium.Node tree) {
@@ -43,7 +42,6 @@ public class Number8Easy {
         return intermediateResult.getValue();
     }
 
-    @NotNull
     private Pair<Boolean, Integer> getUniVal(Number3Medium.Node tree) {
         final int value = tree.data;
         int count = 0;
