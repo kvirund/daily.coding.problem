@@ -22,18 +22,18 @@ import java.util.Map;
  * integers X? For example, if X = {1, 3, 5}, you could climb 1, 3, or 5 steps at a time. Generalize your function to
  * take in X.
  */
-public class Sample {
+public class Number12Hard {
     @SuppressWarnings("FieldCanBeLocal")
     private boolean debug = false;
 
     public static void main(String[] args) {
-        Sample sample = new Sample();
+        Number12Hard solution = new Number12Hard();
 
-        sample.solve(4, new int[]{1, 2});
-        sample.solve(5, new int[]{1, 3, 5});
+        solution.get(4, new int[]{1, 2});
+        solution.get(5, new int[]{1, 3, 5});
     }
 
-    private void solve(int length, int[] steps) {
+    private void get(int length, int[] steps) {
         final LinkedList<Integer> path = new LinkedList<>();
         final Map<Integer, Integer> cache = new HashMap<>();
         final int result = get_steps(length, steps, path, cache);
