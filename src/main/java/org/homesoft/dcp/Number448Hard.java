@@ -28,7 +28,7 @@ public class Number448Hard {
         int bluePointer = input.length;
 
         /*
-         * #1: rg'G', 'B', 'R', 'R', 'B', 'R', 'G', b - noop
+         * #1: rg'G', 'B', 'R', 'R', 'B', 'R', 'G', b -> r'G', g'B', 'R', 'R', 'B', 'R', 'G', b
          * #2: r'G', g'B', 'R', 'R', 'B', 'R', 'G', b -> r'G', 'G', g'R', 'R', 'B', 'R', b'B'
          * #3: r'G', 'G', g'R', 'R', 'B', 'R', b'B' -> r'R', 'G', 'G', g'R', 'B', 'R', b'B'
          * #4: r'R', 'G', 'G', g'R', 'B', 'R', b'B' -> r'R', 'R', 'G', 'G', g'B', 'R', b'B'
