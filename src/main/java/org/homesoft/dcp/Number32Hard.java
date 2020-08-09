@@ -13,7 +13,7 @@ import java.util.Arrays;
  */
 public class Number32Hard {
     public static void main(String[] args) {
-        Number32Hard solution = new Number32Hard();
+        final Number32Hard solution = new Number32Hard();
 
         final double[][] impossibleEqual = {{1.0f, 1.0f, 1.0f, 1.0f, 1.0f},
                 {1.0f, 1.0f, 1.0f, 1.0f, 1.0f},
