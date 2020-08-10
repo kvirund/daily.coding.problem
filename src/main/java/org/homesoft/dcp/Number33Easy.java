@@ -48,6 +48,7 @@ public class Number33Easy {
                 //noinspection ConstantConditions
                 System.out.println((right.peek() + left.peek()) / 2.0);
             } else {
+                //noinspection ConstantConditions
                 System.out.println((double) right.peek());
             }
         }
