@@ -40,5 +40,9 @@ dependencies {
     testImplementation 'junit:junit:4.12'
 }
 
+java {
+    sourceCompatibility = JavaVersion.VERSION_11
+}
+
 // Define the main class for the application
 mainClassName = 'org.homesoft.dcp.App'

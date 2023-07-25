@@ -1,6 +1,6 @@
 package org.homesoft.dcp;
 
-import javafx.util.Pair;
+import org.apache.commons.lang3.tuple.ImmutablePair;
 
 /**
  * This problem was asked by Google.
@@ -38,27 +38,27 @@ public class Number8Easy {
             return 0;
         }
 
-        final Pair<Boolean, Integer> intermediateResult = getUniVal(tree);
+        final ImmutablePair<Boolean, Integer> intermediateResult = getUniVal(tree);
         return intermediateResult.getValue();
     }
 
-    private Pair<Boolean, Integer> getUniVal(Number3Medium.Node tree) {
+    private ImmutablePair<Boolean, Integer> getUniVal(Number3Medium.Node tree) {
         final int value = tree.data;
         int count = 0;
         boolean unival = true;
 
         if (null != tree.left) {
-            Pair<Boolean, Integer> leftValue = getUniVal(tree.left);
+            ImmutablePair<Boolean, Integer> leftValue = getUniVal(tree.left);
             count += leftValue.getValue();
             unival = leftValue.getKey() && value == leftValue.getValue();
         }
 
         if (null != tree.right) {
-            Pair<Boolean, Integer> rightValue = getUniVal(tree.right);
+            ImmutablePair<Boolean, Integer> rightValue = getUniVal(tree.right);
             count += rightValue.getValue();
             unival = rightValue.getKey() && value == rightValue.getValue();
         }
 
-        return new Pair<>(unival, count + (unival ? 1 : 0));
+        return new ImmutablePair<>(unival, count + (unival ? 1 : 0));
     }
 }

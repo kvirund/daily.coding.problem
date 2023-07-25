@@ -1,6 +1,6 @@
 package org.homesoft.dcp;
 
-import javafx.util.Pair;
+import org.apache.commons.lang3.tuple.ImmutablePair;
 
 import java.util.Arrays;
 import java.util.Queue;
@@ -34,8 +34,8 @@ public class Number23Easy {
                 {true, true, false, true},
                 {false, false, false, false},
                 {false, false, false, false}};
-        final Pair<Integer, Integer> start = new Pair<>(3, 0);
-        final Pair<Integer, Integer> end = new Pair<>(0, 0);
+        final ImmutablePair<Integer, Integer> start = new ImmutablePair<>(3, 0);
+        final ImmutablePair<Integer, Integer> end = new ImmutablePair<>(0, 0);
         System.out.println(solution.get(field, start, end));
         System.out.println(solution.get(field, start, start));
         boolean[][] noWayField = {{false, false, false, false},
@@ -45,12 +45,12 @@ public class Number23Easy {
         System.out.println(solution.get(noWayField, start, end));
     }
 
-    private Integer get(boolean[][] field, Pair<Integer, Integer> start, Pair<Integer, Integer> end) {
+    private Integer get(boolean[][] field, ImmutablePair<Integer, Integer> start, ImmutablePair<Integer, Integer> end) {
         if (0 == field.length) {
             return null;
         }
 
-        final Queue<Pair<Integer, Integer>> queue = new LinkedBlockingQueue<>();
+        final Queue<ImmutablePair<Integer, Integer>> queue = new LinkedBlockingQueue<>();
         final int[][] routeLengths = new int[field.length][field[0].length];
         for (int row = 0; row != routeLengths.length; ++row) {
             Arrays.fill(routeLengths[row], -1);
@@ -60,35 +60,35 @@ public class Number23Easy {
         routeLengths[start.getKey()][start.getValue()] = 0;
 
         while (!queue.isEmpty()) {
-            final Pair<Integer, Integer> from = queue.poll();
+            final ImmutablePair<Integer, Integer> from = queue.poll();
             final int currentLength = routeLengths[from.getKey()][from.getValue()];
             if (from.equals(end)) {
                 return currentLength;
             }
 
             if (0 < from.getKey()) {
-                final Pair<Integer, Integer> nextPoint = new Pair<>(from.getKey() - 1, from.getValue());
+                final ImmutablePair<Integer, Integer> nextPoint = new ImmutablePair<>(from.getKey() - 1, from.getValue());
                 if (canGo(field, routeLengths, nextPoint)) {
                     queue.add(nextPoint);
                     routeLengths[nextPoint.getKey()][nextPoint.getValue()] = 1 + currentLength;
                 }
             }
             if (field.length > 1 + from.getKey()) {
-                final Pair<Integer, Integer> nextPoint = new Pair<>(1 + from.getKey(), from.getValue());
+                final ImmutablePair<Integer, Integer> nextPoint = new ImmutablePair<>(1 + from.getKey(), from.getValue());
                 if (canGo(field, routeLengths, nextPoint)) {
                     queue.add(nextPoint);
                     routeLengths[nextPoint.getKey()][nextPoint.getValue()] = 1 + currentLength;
                 }
             }
             if (0 < from.getValue()) {
-                final Pair<Integer, Integer> nextPoint = new Pair<>(from.getKey(), from.getValue() - 1);
+                final ImmutablePair<Integer, Integer> nextPoint = new ImmutablePair<>(from.getKey(), from.getValue() - 1);
                 if (canGo(field, routeLengths, nextPoint)) {
                     queue.add(nextPoint);
                     routeLengths[nextPoint.getKey()][nextPoint.getValue()] = 1 + currentLength;
                 }
             }
             if (field[0].length > 1 + from.getValue()) {
-                final Pair<Integer, Integer> nextPoint = new Pair<>(from.getKey(), 1 + from.getValue());
+                final ImmutablePair<Integer, Integer> nextPoint = new ImmutablePair<>(from.getKey(), 1 + from.getValue());
                 if (canGo(field, routeLengths, nextPoint)) {
                     queue.add(nextPoint);
                     routeLengths[nextPoint.getKey()][nextPoint.getValue()] = 1 + currentLength;
@@ -99,7 +99,7 @@ public class Number23Easy {
         return null;
     }
 
-    private boolean canGo(boolean[][] field, int[][] routeLengths, Pair<Integer, Integer> nextPoint) {
+    private boolean canGo(boolean[][] field, int[][] routeLengths, ImmutablePair<Integer, Integer> nextPoint) {
         return !field[nextPoint.getKey()][nextPoint.getValue()]
                 && -1 == routeLengths[nextPoint.getKey()][nextPoint.getValue()];
     }

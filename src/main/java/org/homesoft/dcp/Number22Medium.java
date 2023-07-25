@@ -1,7 +1,5 @@
 package org.homesoft.dcp;
 
-import com.sun.deploy.util.StringUtils;
-
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
@@ -30,7 +28,7 @@ public class Number22Medium {
 
     private void print(String[] dictionary, String input) {
         final List<String> result = get(dictionary, input);
-        System.out.println(null == result ? "<null>" : StringUtils.join(result, ", "));
+        System.out.println(null == result ? "<null>" : String.join(", ", result));
     }
 
     private List<String> get(String[] dictionary, String input) {
